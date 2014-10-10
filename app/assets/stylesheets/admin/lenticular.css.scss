@@ -21,3 +21,18 @@ form#new_lenticular,
   cursor: grab;
   // cursor: grabbing;
 }
+
+table#lenticulars.datatable {
+  border-collapse: collapse;
+  tr:nth-child(even) {
+    td:nth-child(even) { background: orange }
+    td:nth-child( odd) { background: yellow }
+  }
+
+  tr:nth-child(odd) {
+    td:nth-child(even) { background: yellow }
+    td:nth-child( odd) { background: orange }
+  }
+
+
+}

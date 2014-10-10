@@ -23,6 +23,8 @@ $(function() {
 
   // viewport.setAttribute('content', 'width=1200');
 
+  checkDevicePixelRatio();
+
   if('ontouchstart' in window) {
     document.documentElement.classList.add('touch');
   } else {
@@ -103,4 +105,24 @@ function enableFullscreen(event) {
   } else if (elem.webkitRequestFullscreen) {
     elem.webkitRequestFullscreen();
   }
+}
+
+function checkDevicePixelRatio() {
+  console.log(devicePixelRatio);
+  $('.lenticular').each(function(){
+    var image = this.querySelector('.image');
+    var width = image.dataset.width/devicePixelRatio;
+    var height = image.dataset.height/devicePixelRatio;
+    // console.log(image);
+    console.log(width, height);
+    image.style.backgroundSize = width + "px " + height + "px";
+    image.style.maxWidth = width;
+    image.style.height = height;
+
+    var lense = this.querySelector('.lense');
+    width = lense.dataset.width/devicePixelRatio;
+    height = lense.dataset.height/devicePixelRatio;
+    lense.style.backgroundSize =  width + "px " + height + "px";
+
+  });
 }
