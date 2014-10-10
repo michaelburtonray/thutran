@@ -75,4 +75,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Paperclip S3 settings
+  config.paperclip_defaults = {
+    :s3_credentials => {
+      :bucket => 'thutran-production',
+      :access_key_id => 'AKIAI5Z5EMPYNPX2G4BA',
+      :secret_access_key => '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'
+    }
+  }
+
+
 end

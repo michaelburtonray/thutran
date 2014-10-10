@@ -42,3 +42,11 @@ gem 'unicorn'
 gem 'rails_12factor',             group: :production
 gem 'rails_serve_static_assets',  group: :production
 ruby '2.1.2'
+
+
+gem 'rails-admin-scaffold', group: :development
+
+
+# gems for image Attachments
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 1.5.7'

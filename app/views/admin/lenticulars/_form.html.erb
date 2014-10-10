@@ -1,0 +1,31 @@
+<%= form_for([:admin, @lenticular]) do |f| %>
+  <% if @lenticular.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lenticular.errors.count, "error") %> prohibited this lenticular from being saved:</h2>
+
+      <ul>
+      <% @lenticular.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lense %><br>
+    <%= f.file_field :lense %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+      <%= f.label :anchor_hyperlink_reference %><br>
+    <%= f.text_field :anchor_hyperlink_reference %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

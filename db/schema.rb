@@ -11,9 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141010023351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lenticulars", force: true do |t|
+    t.string   "anchor_hyperlink_reference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "lense_file_name"
+    t.string   "lense_content_type"
+    t.integer  "lense_file_size"
+    t.datetime "lense_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_dimensions"
+    t.string   "lense_dimensions"
+  end
 
 end

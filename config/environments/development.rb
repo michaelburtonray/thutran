@@ -34,4 +34,15 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Paperclip S3 settings
+  config.paperclip_defaults = {
+    :s3_credentials => {
+      :bucket => 'thutran-development',
+      :access_key_id => 'AKIAI5Z5EMPYNPX2G4BA',
+      :secret_access_key => '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'
+    }
+  }
+
+
 end
