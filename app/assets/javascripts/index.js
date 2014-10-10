@@ -116,8 +116,8 @@ function checkDevicePixelRatio() {
     // console.log(image);
     console.log(width, height);
     image.style.backgroundSize = width + "px " + height + "px";
-    image.style.maxWidth = width;
-    image.style.height = height;
+    image.style.maxWidth = width + 'px';
+    image.style.height = height + 'px';
 
     var lense = this.querySelector('.lense');
     width = lense.dataset.width/devicePixelRatio;
