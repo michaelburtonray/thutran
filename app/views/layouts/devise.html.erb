@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="loading no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="loading no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="loading no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="loading no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Flour Shop's online playroom to place orders, ogle the goods, and join the birthday club. Come play with us!">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="initial-scale=1">
+
+  <title>Admin - Flour Shop</title>
+
+  <meta property="og:image" content="http://files.flourshop.com/fs-sprinkles-50.png">
+
+  <link rel="icon" href="<%= image_path('favicon.png') %>">
+  <link rel="apple-touch-icon-precomposed" href="<%= image_path('favicon.png') %>">
+
+
+  <!--
+         _ _         _             _   _ _   _ __  __    _    _   _
+     ___(_) |_ ___  | |__  _   _  | | | | | | |  \/  |  / \  | \ | |
+    / __| | __/ _ \ | '_ \| | | | | |_| | | | | |\/| | / _ \ |  \| |
+    \__ \ | ||  __/ | |_) | |_| | |  _  | |_| | |  | |/ ___ \| |\  |
+    |___/_|\__\___| |_.__/ \__, | |_| |_|\___/|_|  |_/_/   \_\_| \_|
+                           |___/
+    http://human-nyc.com/
+  -->
+
+
+  <%= stylesheet_link_tag "admin/application", media: "all" %>
+
+  <%= javascript_include_tag "admin/application" %>
+
+  <%= csrf_meta_tags %>
+
+</head>
+<body class="admin <%= controller_name %> <%= action_name %>">
+
+  <% flash.each do |key, value| %>
+    <div class='flash' id='<%= key %>'>
+      <%= value %>
+    </div>
+  <% end %>
+
+  <header>
+
+    <h1><%= link_to "Thu Tran", admin_root_path, { id: "mini-logo"} %></h1>
+
+    <nav id="mini-menu">
+
+      <% if user_signed_in? %>
+        <span>Welcome <%= current_user.email %></span>
+        <%= link_to "Edit Profile", edit_user_registration_path %>
+      <% end %>
+
+      <%= link_to "View Website", root_path, :target => "_blank" %>
+
+      <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+
+    </nav>
+
+  </header>
+
+  <%= yield %>
+
+
+  <script src="//use.typekit.net/wcp7nwt.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+</body>
+</html>
+
