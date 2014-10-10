@@ -1,5 +1,7 @@
 class Lenticular < ActiveRecord::Base
 
+  default_scope { order("position") }
+
   has_attached_file :lense
   validates_attachment_content_type :lense, :content_type => /\Aimage\/.*\Z/
 
@@ -12,8 +14,6 @@ class Lenticular < ActiveRecord::Base
 
   before_save :extract_lense_dimensions
   serialize :lense_dimensions
-
-
 
   # Retrieves dimensions for image assets
   # @note Do this after resize operations to account for auto-orientation.

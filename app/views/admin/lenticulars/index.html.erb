@@ -1,30 +1,36 @@
 <h1>Listing lenticulars</h1>
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Lense</th>
-      <th>Anchor hyperlink reference</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lenticulars.each do |lenticular| %>
+<%= form_tag do |f| %>
+  <table width="100%" border=1>
+    <thead>
       <tr>
-        <td><%= image_tag lenticular.image.url, :width => 100 %><br><%= lenticular.image_dimensions %></td>
-        <td><%= image_tag lenticular.lense.url, :width => 100 %><br><%= lenticular.lense_dimensions %></td>
-        <td><%= lenticular.anchor_hyperlink_reference %></td>
-        <td><%= link_to 'Show', "/\#section_#{lenticular.id}", :target => "_blank" %></td>
-        <td><%= link_to 'Edit', edit_admin_lenticular_path(lenticular), :class => "edit button" %></td>
-        <td><%= link_to 'Destroy', [:admin, lenticular], method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete button" %></td>
+        <th>Order</th>
+        <th>Image</th>
+        <th>Lense</th>
+        <th>Anchor hyperlink reference</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @lenticulars.each do |lenticular| %>
+        <tr>
+          <td><%= lenticular.position %></td>
+          <td><%= image_tag lenticular.image.url, :width => 100, :title => lenticular.image_dimensions %></td>
+          <td><%= image_tag lenticular.lense.url, :width => 100, :title => lenticular.lense_dimensions %></td>
+          <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
+          <td><input type="radio" id="background_<%= lenticular.id %>" name="background[]" value="<%= lenticular.id %>"><label for="background_<%= lenticular.id %>">Use as Background</label></td>
+          <td><%= link_to 'Show', "/\#lenticular_#{lenticular.id}", :class => "update button", :target => "_blank" %></td>
+          <td><%= link_to 'Edit', edit_admin_lenticular_path(lenticular), :class => "edit button" %></td>
+          <td><%= link_to 'Destroy', [:admin, lenticular], method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete button" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>
 

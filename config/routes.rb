@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
+  get 'index/index'
+  end
+
+  devise_for :users
+  namespace :admin do
+    root 'index#index'
     resources :lenticulars
   end
 
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'index#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
