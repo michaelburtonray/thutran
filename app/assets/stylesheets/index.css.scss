@@ -25,9 +25,11 @@ $slow: 800ms;
 }
 
 html {
-  background-image: url(/images/BG_NOISE.jpg);
+  background-color: black;
   background-position: center;
   background-repeat: repeat;
+  color: white;
+  text-align: center;
   &.no-touch {
     background-attachment: fixed;
   }
@@ -101,6 +103,10 @@ a.image:hover {
   left: 0;
 }
 
+#content {
+  min-height: calc(100vh - 102px);
+}
+
 article.lenticular {
   background-image: url(/images/BG_NOISE_lens.png);
   background-position: bottom center;
@@ -116,7 +122,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  text-align: center;
+  // text-align: center;
   p {
     margin: 1em;
     padding: 0 1em;

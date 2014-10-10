@@ -3,28 +3,27 @@
 <!--[if IE 7]>         <html class="loading no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="loading no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="loading no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Flour Shop's online playroom to place orders, ogle the goods, and join the birthday club. Come play with us!">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="initial-scale=1">
 
-  <title>Admin - Thu Tran</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Flour Shop's online playroom to place orders, ogle the goods, and join the birthday club. Come play with us!">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="initial-scale=1">
 
-  <meta property="og:image" content="http://files.flourshop.com/fs-sprinkles-50.png">
+<title>Admin - Thu Tran</title>
 
-  <link rel="icon" href="<%= image_path('favicon.png') %>">
-  <link rel="apple-touch-icon-precomposed" href="<%= image_path('favicon.png') %>">
+<meta property="og:image" content="http://files.flourshop.com/fs-sprinkles-50.png">
+
+<link rel="icon" href="<%= image_path('favicon.png') %>">
+<link rel="apple-touch-icon-precomposed" href="<%= image_path('favicon.png') %>">
 
 
-  <%= stylesheet_link_tag "admin/application", media: "all" %>
+<%= stylesheet_link_tag "admin/application", media: "all" %>
 
-  <%= javascript_include_tag "admin/application" %>
+<%= javascript_include_tag "admin/application" %>
 
-  <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
 
-</head>
 <body class="admin <%= controller_name %> <%= action_name %>">
 
   <% flash.each do |key, value| %>
@@ -56,12 +55,7 @@
 
   </header>
 
-  <%= yield %>
-
-
-  <script src="//use.typekit.net/wcp7nwt.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
-
-</body>
-</html>
+  <div id="content">
+    <%= yield %>
+  </div>
 

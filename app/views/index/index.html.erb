@@ -7,20 +7,26 @@
 
 <% end %>
 
-<% @lenticulars.each do |lenticular| %>
+<% if @lenticulars.any? %>
+  <% @lenticulars.each do |lenticular| %>
 
-  <article class="lenticular" id="lenticular_<%= lenticular.id %>">
-    <% if lenticular.anchor_hyperlink_reference.length > 0 %>
-      <a href="<%= lenticular.anchor_hyperlink_reference %>" target="_blank" class="image SPACEBAR" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px">
-        <div class="lens" style="background-image: url('<%= lenticular.lense.url %>')"></div>
-      </a>
-    <% else %>
-      <div class="image SPACEBAR" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px">
-        <div class="lens" style="background-image: url('<%= lenticular.lense.url %>')"></div>
-      </div>
-    <% end %>
+    <article class="lenticular" id="lenticular_<%= lenticular.id %>">
+      <% if lenticular.anchor_hyperlink_reference.length > 0 %>
+        <a href="<%= lenticular.anchor_hyperlink_reference %>" target="_blank" class="image SPACEBAR" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px">
+          <div class="lens" style="background-image: url('<%= lenticular.lense.url %>')"></div>
+        </a>
+      <% else %>
+        <div class="image SPACEBAR" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px">
+          <div class="lens" style="background-image: url('<%= lenticular.lense.url %>')"></div>
+        </div>
+      <% end %>
+    </article>
 
 
-  </article>
+  <% end %>
+
+<% else %>
+
+  <p>no lenticulars to display</p>
 
 <% end %>

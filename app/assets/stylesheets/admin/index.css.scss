@@ -1,3 +1,14 @@
 // Place all the styles related to the admin/index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+nav#main-menu {
+  a {
+    transition: background $slow;
+    &:hover {
+      background: black;
+      color: $white;
+      transition-duration: $fast;
+    }
+  }
+}
