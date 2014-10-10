@@ -1,0 +1,23 @@
+html {
+  background: $white;
+  color: $black;
+  font: medium "Verdana", sans-serif;
+  // transform: scale(.5);
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+.button {
+  background: $black;
+  color: $white;
+  display: inline-block;
+  font-size: smaller;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  &:hover {
+  background: $black;
+  color: $white;
+  }
+}
