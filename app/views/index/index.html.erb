@@ -7,6 +7,8 @@
 
 <% end %>
 
+<div id="background-info" data-image-width="<%= @background.image_dimensions[0] %>" data-image-height="<%= @background.image_dimensions[1] %>" data-lense-width="<%= @background.lense_dimensions[0] %>" data-lense-height="<%= @background.lense_dimensions[1] %>"></div>
+
 <% if @lenticulars.any? %>
   <% @lenticulars.each do |lenticular| %>
 

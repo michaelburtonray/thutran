@@ -23,7 +23,6 @@ $(function() {
 
   // viewport.setAttribute('content', 'width=1200');
 
-  checkDevicePixelRatio();
 
   if('ontouchstart' in window) {
     document.documentElement.classList.add('touch');
@@ -47,6 +46,7 @@ $(function() {
   $(window).on('load', fadeInContent);
 
 
+  checkDevicePixelRatio();
 
 });
 
@@ -108,21 +108,30 @@ function enableFullscreen(event) {
 }
 
 function checkDevicePixelRatio() {
-  console.log(devicePixelRatio);
+
   $('.lenticular').each(function(){
     var image = this.querySelector('.image');
     var width = image.dataset.width/devicePixelRatio;
     var height = image.dataset.height/devicePixelRatio;
-    // console.log(image);
-    console.log(width, height);
+
     image.style.backgroundSize = width + "px " + height + "px";
     image.style.maxWidth = width + 'px';
     image.style.height = height + 'px';
 
-    var lense = this.querySelector('.lense');
-    width = lense.dataset.width/devicePixelRatio;
-    height = lense.dataset.height/devicePixelRatio;
-    lense.style.backgroundSize =  width + "px " + height + "px";
+    var lense = this.querySelector('.lense'),
+      lense_width = lense.dataset.width/devicePixelRatio,
+      lens_height = lense.dataset.height/devicePixelRatio,
+      lense.style.backgroundSize =  lense_width + "px " + lense_height + "px";
 
   });
+
+  var background_info_el = document.querySelector('#background-info');
+
+  var html_background_width = background_info_el.dataset['imageWidth']/devicePixelRatio,
+    html_background_height = background_info_el.dataset['imageHeight']/devicePixelRatio,
+    body_background_width = background_info_el.dataset['lenseWidth']/devicePixelRatio,
+    body_background_height = background_info_el.dataset['lenseHeight']/devicePixelRatio;
+
+  document.documentElement.style.backgroundSize = html_background_width + "px " + html_background_height + "px";
+  document.body.style.backgroundSize = body_background_width + "px " + body_background_height + "px";
 }

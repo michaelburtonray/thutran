@@ -8,8 +8,12 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= csrf_meta_tags %>
 
-<div id="content">
-  <%= yield %>
-</div>
+<body>
 
-<%= render "shared/footer" %>
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <%= render "shared/footer" %>
+
+</body>

@@ -38,7 +38,7 @@ class Lenticular < ActiveRecord::Base
   end
 
   def set_position
-    self.position = Lenticular.count
+    # self.position = self.position || Lenticular.count
   end
 
 end
