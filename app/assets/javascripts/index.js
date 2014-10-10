@@ -17,9 +17,9 @@ $(function() {
   "use strict";
 
   //set viewport settings
-  var initial_scale = 1 / window.devicePixelRatio;
-  var viewport = document.querySelector("meta[name=viewport]");
-  viewport.setAttribute('content', 'initial-scale=' + initial_scale);
+  // var initial_scale = 1 / window.devicePixelRatio;
+  // var viewport = document.querySelector("meta[name=viewport]");
+  // viewport.setAttribute('content', 'initial-scale=' + initial_scale);
 
   // viewport.setAttribute('content', 'width=1200');
 
