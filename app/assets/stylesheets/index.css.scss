@@ -1,6 +1,8 @@
 // Place all the styles related to the Index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$fast: 400ms;
+$slow: 800ms;
 
 @-webkit-keyframes back {
   0% {
@@ -74,7 +76,13 @@ a {
   margin: auto;
   max-width: 1200px;
   position: relative;
+  transition: opacity $slow;
 }
+a.image:hover {
+  // opacity: 0;
+  transition-duration: $fast;
+}
+
 
 .no-touch .image {
   background-attachment: fixed;

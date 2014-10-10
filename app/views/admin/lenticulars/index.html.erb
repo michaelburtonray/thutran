@@ -1,5 +1,6 @@
 <h1>Listing lenticulars</h1>
 
+<% if @lenticulars.any? %>
 <%= form_tag do |f| %>
   <table width="100%" border=1>
     <thead>
@@ -18,7 +19,7 @@
     <tbody>
       <% @lenticulars.each do |lenticular| %>
         <tr>
-          <td><%= lenticular.position %></td>
+          <td><a class="handle">&#9776;</a> <%= lenticular.position %></td>
           <td><%= image_tag lenticular.image.url, :width => 100, :title => lenticular.image_dimensions %></td>
           <td><%= image_tag lenticular.lense.url, :width => 100, :title => lenticular.lense_dimensions %></td>
           <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
@@ -35,3 +36,6 @@
 <br>
 
 <%= link_to 'New Lenticular', new_admin_lenticular_path, :class => "new button" %>
+<% else %>
+  <p>No Lenticulars to display. Why not <%= link_to "Add One", new_admin_lenticular_path %></p>
+<% end %>

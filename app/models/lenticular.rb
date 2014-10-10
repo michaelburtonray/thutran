@@ -15,6 +15,8 @@ class Lenticular < ActiveRecord::Base
   before_save :extract_lense_dimensions
   serialize :lense_dimensions
 
+  before_save :set_position
+
   # Retrieves dimensions for image assets
   # @note Do this after resize operations to account for auto-orientation.
   def extract_image_dimensions
@@ -35,5 +37,8 @@ class Lenticular < ActiveRecord::Base
     end
   end
 
+  def set_position
+    self.position = Lenticular.count
+  end
 
 end

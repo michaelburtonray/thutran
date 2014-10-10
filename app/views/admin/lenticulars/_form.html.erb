@@ -14,13 +14,17 @@
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image %>
-    <%= image_tag @lenticular.image.url, :width => 100 %><br><%= @lenticular.image_dimensions %>
+    <% if @lenticular.image.url != '/images/original/missing.png' %>
+      <%= image_tag @lenticular.image.url, :width => 100 %><br><%= @lenticular.image_dimensions %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :lense %><br>
     <%= f.file_field :lense %>
-    <%= image_tag @lenticular.lense.url, :width => 100 %><br><%= @lenticular.lense_dimensions %>
+    <% if @lenticular.lense.url != '/lenses/original/missing.png' %>
+      <%= image_tag @lenticular.lense.url, :width => 100 %><br><%= @lenticular.lense_dimensions %>
+    <% end %>
   </div>
 
   <div class="field">
