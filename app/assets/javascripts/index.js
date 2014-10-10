@@ -120,8 +120,9 @@ function checkDevicePixelRatio() {
 
     var lense = this.querySelector('.lense'),
       lense_width = lense.dataset.width/devicePixelRatio,
-      lens_height = lense.dataset.height/devicePixelRatio,
-      lense.style.backgroundSize =  lense_width + "px " + lense_height + "px";
+      lense_height = lense.dataset.height/devicePixelRatio;
+
+    lense.style.backgroundSize = lense_width + "px " + lense_height + "px";
 
   });
 
