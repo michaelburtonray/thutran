@@ -53,6 +53,15 @@ class Admin::LenticularsController < Admin::ApplicationController
     end
   end
 
+
+  def sort
+    lenticulars = params[:lenticulars]
+    lenticulars.each do |key, value|
+      Lenticular.find(lenticulars[key][:id]).update_column(:position, lenticulars[key][:position])
+    end
+    render nothing: true
+  end
+
   # DELETE /admin/lenticulars/1
   # DELETE /admin/lenticulars/1.json
   def destroy

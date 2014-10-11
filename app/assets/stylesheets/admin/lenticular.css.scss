@@ -1,6 +1,9 @@
 // Place all the styles related to the Admin::Lenticular controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//= require jquery-ui/sortable
+
+
 
 form#new_lenticular,
 .edit_lenticular {
@@ -19,20 +22,46 @@ form#new_lenticular,
 
 .handle {
   cursor: grab;
+  display: inline-block;
+  padding: 1em;
+  // background: magenta;
   // cursor: grabbing;
 }
 
 table#lenticulars.datatable {
   border-collapse: collapse;
+  // border: 1px solid red;
+  // width: calc(100% - 16px);
+
+  thead {
+    // border-bottom: 1px solid black;
+  }
+
+  th,
+  td {
+    background: white;
+    border: 1px solid black;
+    padding: 0.50em;
+  }
+
+  td:first-child {
+    padding: 0;
+  }
+
   tr:nth-child(even) {
-    td:nth-child(even) { background: orange }
-    td:nth-child( odd) { background: yellow }
+    // background: lightGray;
+    // td:nth-child(even) { background: orange }
+    // td:nth-child( odd) { background: yellow }
   }
 
   tr:nth-child(odd) {
-    td:nth-child(even) { background: yellow }
-    td:nth-child( odd) { background: orange }
+    // background: gray;
+    // td:nth-child(even) { background: yellow }
+    // td:nth-child( odd) { background: orange }
   }
 
+  tbody td:first-child {
+    text-align: center;
+  }
 
 }

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'index/index'
-  end
 
   devise_for :users
+
   namespace :admin do
     root 'index#index'
+
+
+    put 'lenticulars/sort', to: 'lenticulars#sort', as: 'sort_lenticulars'
+
     resources :lenticulars
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

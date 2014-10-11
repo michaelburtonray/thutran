@@ -33,6 +33,26 @@ header {
 }
 
 #content {
-  min-height: 100vh;
+  min-height: calc(100vh - 16px);
   overflow: hidden;
+  padding: 8px;
+}
+
+form {
+  .actions {
+    text-align: center;
+  }
+}
+
+.field {
+  margin: 1em 0;
+}
+
+input {
+  // margin: 1em;
+}
+
+table {
+  margin: 1em auto;
+  width: 100%;
 }
