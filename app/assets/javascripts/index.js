@@ -28,7 +28,7 @@ $(function() {
     document.documentElement.classList.add('touch');
   } else {
     document.documentElement.classList.add('no-touch');
-    $('.image.SPACEBAR').on('click', enableFullscreen);
+    // $('.image.SPACEBAR').on('click', enableFullscreen);
   }
 
   flag = false,
