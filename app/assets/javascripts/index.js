@@ -35,9 +35,23 @@ $(function() {
   direction = 'down';
 
   (function animloop(){
-    requestAnimationFrame(animloop);
+
+    // setTimeout(requestAnimationFrame(animloop), 100);
+
+    requestAnimationFrame(function(){
+      setTimeout(animloop, 150);
+    });
+
+
+    if(window.direction === 'up' && window.scrollY <= 0)
+      window.direction = 'down'
+
+    if(window.direction === 'down' && window.innerHeight + window.scrollY >= document.body.offsetHeight)
+      window.direction = 'up'
+
 
     if(flag === true) render();
+
   })();
 
   $(document).on('keypress', respondToKeypress);
