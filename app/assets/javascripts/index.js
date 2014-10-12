@@ -39,7 +39,7 @@ $(function() {
 
   (animloop)();
 
-  $(document).on('keypress', respondToKeypress);
+  // $(document).on('keypress', respondToKeypress);
   // $(document).on('touchend', respondToKeypress);
 
   $(window).on('load', fadeInContent);

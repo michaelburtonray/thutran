@@ -134,7 +134,7 @@ a.image:hover {
   bottom: 0;
   left: 0;
   html.animate & {
-    animation: animate_background_position 1s linear infinite;
+    animation: animate_background_position 400ms linear infinite;
   }
 }
 
