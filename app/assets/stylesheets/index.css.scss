@@ -106,6 +106,7 @@ a.image:hover {
 
 #content {
   min-height: calc(100vh - 102px);
+  overflow: hidden;
 }
 
 article.lenticular {

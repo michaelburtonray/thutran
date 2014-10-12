@@ -3,6 +3,7 @@
   <style type="text/css">
     html { background-image: url('<%= @background.image.url %>') }
     body { background-image: url('<%= @background.lense.url %>') }
+
   </style>
 
 <% end %>
@@ -12,7 +13,7 @@
 <% if @lenticulars.any? %>
   <% @lenticulars.each do |lenticular| %>
 
-    <article class="lenticular" id="lenticular_<%= lenticular.id %>">
+    <article class="lenticular" id="lenticular_<%= lenticular.id %>" style="<%= lenticular.position == 1 ? "margin-top: calc(50vh - #{lenticular.image_dimensions[1]/2}px)" : nil %>">
       <% if lenticular.anchor_hyperlink_reference.length > 0 %>
         <a href="<%= lenticular.anchor_hyperlink_reference %>" target="_blank" class="image SPACEBAR" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px" data-width="<%= lenticular.image_dimensions[0] %>" data-height="<%= lenticular.image_dimensions[1] %>">
           <div class="lense" style="background-image: url('<%= lenticular.lense.url %>')"  data-width="<%= lenticular.lense_dimensions[0] %>" data-height="<%= lenticular.lense_dimensions[1] %>"></div>
