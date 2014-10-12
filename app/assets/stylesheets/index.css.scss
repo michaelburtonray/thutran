@@ -40,12 +40,12 @@ html {
 html.loading {
   height: 100%;
   overflow: hidden;
-  -webkit-animation: back 400ms linear infinite;
-  animation: back 40s linear infinite;
+  // -webkit-animation: back 400ms linear infinite;
+  // animation: back 40s linear infinite;
 }
 
 html.loading body {
-  opacity: 0;
+  // opacity: 0;
 }
 
 body {
@@ -101,7 +101,7 @@ a.image:hover {
   }
 
   100% {
-    background-position: 0 1024px;
+    background-position: 0 4px;
   }
 
 }
@@ -114,9 +114,9 @@ a.image:hover {
   bottom: 0;
   left: 0;
 
-  html.animate & {
-    animation: animate_background_position 200s infinite;
-  }
+  // html.animate & {
+  //   animation: animate_background_position 200s infinite;
+  // }
 }
 
 
@@ -124,6 +124,18 @@ a.image:hover {
 #content {
   min-height: calc(100vh - 102px);
   overflow: hidden;
+  position: relative;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  html.animate & {
+    animation: animate_background_position 1s linear infinite;
+  }
 }
 
 article.lenticular {
