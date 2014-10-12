@@ -9,8 +9,12 @@ window.requestAnimationFrame || (window.requestAnimationFrame =
   }, 1000 / 60);
 });
 
-var flag,
-  direction;
+
+var $lenses,
+  flag = false,
+  animate_background_position = false,
+  direction = 'down';
+
 
 $(function() {
 
@@ -22,7 +26,7 @@ $(function() {
   // viewport.setAttribute('content', 'initial-scale=' + initial_scale);
 
   // viewport.setAttribute('content', 'width=1200');
-
+  $lenses = $('.lense').add('body');
 
   if('ontouchstart' in window) {
     document.documentElement.classList.add('touch');
@@ -31,30 +35,9 @@ $(function() {
     // $('.image.SPACEBAR').on('click', enableFullscreen);
   }
 
-  flag = false,
-  direction = 'down';
+  (animloop)();
 
-  (function animloop(){
-
-    // setTimeout(requestAnimationFrame(animloop), 100);
-
-    requestAnimationFrame(function(){
-      setTimeout(animloop, 150);
-    });
-
-
-    if(window.direction === 'up' && window.scrollY <= 0)
-      window.direction = 'down'
-
-    if(window.direction === 'down' && window.innerHeight + window.scrollY >= document.body.offsetHeight)
-      window.direction = 'up'
-
-
-    if(flag === true) render();
-
-  })();
-
-  $(document).on('keypress', respondToKeypress);
+  $(document).on('keypress touchend', respondToKeypress);
 
 
   $(window).on('load', fadeInContent);
@@ -64,11 +47,31 @@ $(function() {
 
 });
 
+function animloop(){
+
+  // setTimeout(requestAnimationFrame(animloop), 100);
+
+  requestAnimationFrame(function(){
+    setTimeout(animloop, 150);
+  });
+
+
+  if(window.direction === 'up' && window.scrollY <= 0)
+    window.direction = 'down'
+
+  if(window.direction === 'down' && window.innerHeight + window.scrollY >= document.body.offsetHeight)
+    window.direction = 'up'
+
+
+  if(flag === true) render();
+
+  if(animate_background_position) renderTouch();
+}
+
 var xpos = 0,
   ypos = 0,
   modulus = 1,
   i = 0;
-
 
 function render() {
   // var interval = 17;
@@ -82,6 +85,19 @@ function render() {
   window.scrollTo(xpos, ypos);
 
   i++;
+}
+
+var background_position = 0;
+function renderTouch() {
+  background_position++;
+
+
+
+  $lenses.each(function(){
+    this.style.backgroundPosition = "0px " + background_position + "px";
+  });
+
+  console.log(background_position);
 }
 
 function fadeInContent() {
@@ -104,13 +120,13 @@ function respondToKeypress(event) {
     break;
 
   }
+
+  if(event.type === "touchend") {
+    animate_background_position = animate_background_position ? false : true;
+  }
 }
 
 function enableFullscreen(event) {
-
-  console.log(event);
-
-
   var elem = document.documentElement;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
@@ -150,3 +166,4 @@ function checkDevicePixelRatio() {
   document.documentElement.style.backgroundSize = html_background_width + "px " + html_background_height + "px";
   document.body.style.backgroundSize = body_background_width + "px " + body_background_height + "px";
 }
+
