@@ -30,6 +30,8 @@ $(function() {
 
   if('ontouchstart' in window) {
     document.documentElement.classList.add('touch');
+    document.documentElement.classList.add('animate');
+    // animate_background_position = true;
   } else {
     document.documentElement.classList.add('no-touch');
     // $('.image.SPACEBAR').on('click', enableFullscreen);
@@ -37,8 +39,8 @@ $(function() {
 
   (animloop)();
 
-  $(document).on('keypress touchend', respondToKeypress);
-
+  $(document).on('keypress', respondToKeypress);
+  // $(document).on('touchend', respondToKeypress);
 
   $(window).on('load', fadeInContent);
 
@@ -65,7 +67,15 @@ function animloop(){
 
   if(flag === true) render();
 
-  if(animate_background_position) renderTouch();
+  // if(animate_background_position) renderTouch();
+
+  // if(animate_background_position) {
+  //   document.documentElement.classList.add('animate');
+  //   animate_background_position = animate_background_position ? false : true;
+  // } else {
+  //   document.documentElement.classList.remove('animate');
+  // }
+
 }
 
 var xpos = 0,

@@ -95,6 +95,17 @@ a.image:hover {
   max-width: none;
 }
 
+@keyframes animate_background_position {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 1024px;
+  }
+
+}
+
 .lense {
   background-position: center;
   position: absolute;
@@ -102,7 +113,13 @@ a.image:hover {
   right: 0;
   bottom: 0;
   left: 0;
+
+  html.animate & {
+    animation: animate_background_position 200s infinite;
+  }
 }
+
+
 
 #content {
   min-height: calc(100vh - 102px);
