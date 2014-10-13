@@ -11,10 +11,10 @@
         <tr>
           <th></th>
           <th>Image</th>
-          <th>Lense</th>
           <th>Anchor hyperlink reference</th>
           <th></th>
           <!-- <th></th> -->
+          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -24,10 +24,12 @@
         <% @lenticulars.each do |lenticular| %>
           <tr data-id=<%= lenticular.id %>>
             <td><a class="handle">&#x2195;</a></td>
-            <td><%= image_tag lenticular.image.url, :width => 100, :title => lenticular.image_dimensions %></td>
-            <td><%= image_tag lenticular.lense.url, :width => 100, :title => lenticular.lense_dimensions %></td>
+            <td><%= image_tag lenticular.image.url(:thumb), :title => lenticular.image_dimensions %></td>
+
             <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
+
             <td><input type="radio" id="background_<%= lenticular.id %>" name="background" value="<%= lenticular.id %>"><label for="background_<%= lenticular.id %>">use as background</label></td>
+            <td><input type="radio" id="lense_<%= lenticular.id %>" name="lense" value="<%= lenticular.id %>"><label for="lense_<%= lenticular.id %>">use as master lense</label></td>
             <!-- <td><%= link_to 'Show', "/\#lenticular_#{lenticular.id}", :class => "update button", :target => "_blank" %></td> -->
             <td><%= link_to 'Edit', edit_admin_lenticular_path(lenticular), :class => "edit button" %></td>
             <td><%= link_to 'Destroy', [:admin, lenticular], method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete button" %></td>

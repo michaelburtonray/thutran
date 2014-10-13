@@ -2,18 +2,18 @@ class Lenticular < ActiveRecord::Base
 
   default_scope { order("position") }
 
-  has_attached_file :lense
+  has_attached_file :lense, :styles => { :thumb => "150x100>" }
   validates_attachment_content_type :lense, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image
+  has_attached_file :image, :styles => { :thumb => "150x100>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
 
   before_save :extract_image_dimensions
   serialize :image_dimensions
 
-  before_save :extract_lense_dimensions
-  serialize :lense_dimensions
+  # before_save :extract_lense_dimensions
+  # serialize :lense_dimensions
 
   before_save :set_position
 
@@ -38,7 +38,7 @@ class Lenticular < ActiveRecord::Base
   end
 
   def set_position
-    # self.position = self.position || Lenticular.count
+    self.position ||= Lenticular.count
   end
 
 end

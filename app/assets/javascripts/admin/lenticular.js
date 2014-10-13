@@ -5,45 +5,6 @@
   var lenticulars_table_el,
     datable_tbody_el;
 
-  function fixHelperModified(e, tr) {
-      var $originals = tr.children();
-      var $helper = tr.clone();
-      $helper.children().each(function(index) {
-          $(this).width($originals.eq(index).width())
-      });
-      return $helper;
-  }
-
-  function updateIndex(e, ui) {
-
-    // console.log(e, ui);
-
-    var position_array = [],
-      lenticulars_nodelist = lenticulars_tbody.children;
-
-    for(var i=0; i < lenticulars_nodelist.length; i++) {
-      position_array.push({
-        id: lenticulars_nodelist.item(i).dataset.id,
-        position: i
-      });
-    }
-
-    // console.log(position_array);
-
-
-    $.ajax({
-      type: 'put',
-      data: { lenticulars: position_array },
-      dataType: 'script',
-      url: '/admin/lenticulars/sort',
-      success: function() {
-        $(document).trigger('sortables:updated')
-      }
-    });
-
-
-  }
-
   $(function(){
 
 
@@ -70,10 +31,39 @@
 
 
     }
-
-
   });
 
+  function fixHelperModified(e, tr) {
+      var $originals = tr.children();
+      var $helper = tr.clone();
+      $helper.children().each(function(index) {
+          $(this).width($originals.eq(index).width())
+      });
+      return $helper;
+  }
 
+  function updateIndex(e, ui) {
+
+    var position_array = [],
+      lenticulars_nodelist = lenticulars_tbody.children;
+
+    for(var i=0; i < lenticulars_nodelist.length; i++) {
+      position_array.push({
+        id: lenticulars_nodelist.item(i).dataset.id,
+        position: i
+      });
+    }
+
+
+    $.ajax({
+      type: 'put',
+      data: { lenticulars: position_array },
+      dataType: 'script',
+      url: '/admin/lenticulars/sort',
+      success: function() {
+        $(document).trigger('sortables:updated')
+      }
+    });
+  }
 
 }).call();

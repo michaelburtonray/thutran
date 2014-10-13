@@ -80,6 +80,6 @@ class Admin::LenticularsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lenticular_params
-      params.require(:lenticular).permit(:anchor_hyperlink_reference, :lense, :image, :position)
+      params.require(:lenticular).permit(:image, :anchor_hyperlink_reference, :position)
     end
 end

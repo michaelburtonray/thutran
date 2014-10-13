@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    root 'index#index'
+    root 'lenticulars#index'
 
 
     put 'lenticulars/sort', to: 'lenticulars#sort', as: 'sort_lenticulars'

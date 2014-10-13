@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010054421) do
+ActiveRecord::Schema.define(version: 20141012102120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,11 @@ ActiveRecord::Schema.define(version: 20141010054421) do
     t.string   "anchor_hyperlink_reference"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "lense_file_name"
-    t.string   "lense_content_type"
-    t.integer  "lense_file_size"
-    t.datetime "lense_updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "image_dimensions"
-    t.string   "lense_dimensions"
+    t.string   "image_dimensions",           default: "---\n- 0\n- 0\n"
     t.boolean  "use_as_background"
     t.integer  "position"
   end
