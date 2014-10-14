@@ -2,28 +2,48 @@ html {
   background: $white;
   color: $black;
   font: medium "Verdana", sans-serif;
-  // transform: scale(.5);
 }
 
 body {
-  margin: 0;
+  margin: 0 100px;
+}
+
+a:link {
+  color: deepSkyBlue;
+}
+a:visited {
+  color: fuchsia;
+}
+
+a.vanity {
+  text-decoration: none;
 }
 
 label[for] {
   cursor: pointer;
 }
 
-.button {
+.button,
+.button:link,
+.button:visited {
   background: $black;
+  border: 2px solid $black;
   color: $white;
   display: inline-block;
   font-size: smaller;
   padding: 0.5em 1.5em;
   text-decoration: none;
+  transition-duration: $slow;
   &:hover {
-  background: $black;
-  color: $white;
+  background: $white;
+  color: $black;
+  transition-duration: $fast;
   }
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
 }
 
 header {
@@ -33,7 +53,7 @@ header {
 }
 
 #content {
-  min-height: calc(100vh - 16px);
+  // min-height: calc(100vh - 16px);
   overflow: hidden;
   padding: 8px;
 }
@@ -55,4 +75,8 @@ input {
 table {
   margin: 1em auto;
   width: 100%;
+}
+
+td.center {
+  text-align: center;
 }

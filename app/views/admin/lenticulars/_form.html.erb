@@ -15,7 +15,7 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
     <% if @lenticular.image.url != '/images/original/missing.png' %>
-      <%= image_tag @lenticular.image.url, :width => 100 %><br><%= @lenticular.image_dimensions %>
+      <br><%= image_tag @lenticular.image.url, :width => 100 %>
     <% end %>
   </div>
 

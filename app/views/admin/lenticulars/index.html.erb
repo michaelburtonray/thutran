@@ -2,7 +2,6 @@
 
 <%= link_to 'New Lenticular', new_admin_lenticular_path, :class => "new button" %>
 
-
 <% if @lenticulars.any? %>
 
   <%= form_tag do |f| %>
@@ -29,7 +28,11 @@
               <%= lenticular.image_file_name %>
             </td>
 
-            <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
+            <td class="center">
+              <% if lenticular.anchor_hyperlink_reference != '' %>
+                <%= link_to "&infin;".html_safe, lenticular.anchor_hyperlink_reference, :class => "vanity", :title => lenticular.anchor_hyperlink_reference, :target => "_blank" %>
+              <% end %>
+            </td>
 
 
             <td>
@@ -52,5 +55,7 @@
   <% end %>
 
 <% else %>
-  <p>No Lenticulars to display. Why not <%= link_to "Add One", new_admin_lenticular_path %></p>
+
+  <p>No Lenticulars to display. Why not <%= link_to "Add One", new_admin_lenticular_path %> ?</p>
+
 <% end %>
