@@ -8,17 +8,20 @@ class Admin::LenticularsController < Admin::ApplicationController
   def index
     @lenticulars = Lenticular.all
 
-    @background_config = Configurations.find_or_create_by(name: 'background') do |config|
-      config.value = Lenticular.first.id
+    if(@lenticulars.count > 0)
+
+      @background_config = Configurations.find_or_create_by(name: 'background') do |config|
+        config.value = Lenticular.first.id
+      end
+
+      @lense_config = Configurations.find_or_create_by(name: 'lense') do |config|
+        config.value = Lenticular.first.id
+      end
+
+      @background = Lenticular.find(@background_config.value)
+      @lense = Lenticular.find(@lense_config.value)
+
     end
-
-    @lense_config = Configurations.find_or_create_by(name: 'lense') do |config|
-      config.value = Lenticular.first.id
-    end
-
-    @background = Lenticular.find(@background_config.value)
-    @lense = Lenticular.find(@lense_config.value)
-
 
   end
 
