@@ -13,7 +13,6 @@
           <th>Image</th>
           <th>Anchor hyperlink reference</th>
           <th></th>
-          <!-- <th></th> -->
           <th></th>
           <th></th>
           <th></th>
@@ -24,13 +23,16 @@
         <% @lenticulars.each do |lenticular| %>
           <tr data-id=<%= lenticular.id %>>
             <td><a class="handle">&#x2195;</a></td>
-            <td><%= image_tag lenticular.image.url(:thumb), :title => lenticular.image_dimensions %></td>
+            <td>
+              <%= image_tag lenticular.image.url(:thumb), :title => lenticular.image_dimensions %>
+              <br>
+              <%= lenticular.image_file_name %>
+            </td>
 
             <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
 
 
             <td>
-              [<%= @background.id %>] [<%= lenticular.id %>]
               <%= radio_button :background_config, :value, lenticular.id %>
               <%= label :background_config_value, lenticular.id, 'use as background' %>
             </td>
