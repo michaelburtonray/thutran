@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    root 'lenticulars#index'
+    root 'index#index'
 
 
     put 'lenticulars/sort', to: 'lenticulars#sort', as: 'sort_lenticulars'
+
+    put 'lenticulars/put-background', to: 'lenticulars#put_master_background', as: 'put_master_background'
+    put 'lenticulars/put-lense',      to: 'lenticulars#put_master_lense',      as: 'put_master_lense'
 
     resources :lenticulars
 

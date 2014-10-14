@@ -2,9 +2,6 @@ class Lenticular < ActiveRecord::Base
 
   default_scope { order("position") }
 
-  has_attached_file :lense, :styles => { :thumb => "150x100>" }
-  validates_attachment_content_type :lense, :content_type => /\Aimage\/.*\Z/
-
   has_attached_file :image, :styles => { :thumb => "150x100>" }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 

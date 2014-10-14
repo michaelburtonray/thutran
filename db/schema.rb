@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012102120) do
+ActiveRecord::Schema.define(version: 20141013161023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "configurations", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "configurations", ["name"], name: "index_configurations_on_name", unique: true, using: :btree
+  add_index "configurations", ["value"], name: "index_configurations_on_value", using: :btree
 
   create_table "lenticulars", force: true do |t|
     t.string   "anchor_hyperlink_reference"
@@ -25,7 +35,6 @@ ActiveRecord::Schema.define(version: 20141012102120) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image_dimensions",           default: "---\n- 0\n- 0\n"
-    t.boolean  "use_as_background"
     t.integer  "position"
   end
 

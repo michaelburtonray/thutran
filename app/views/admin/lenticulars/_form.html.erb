@@ -20,22 +20,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :lense %><br>
-    <%= f.file_field :lense %>
-    <% if @lenticular.lense.url != '/lenses/original/missing.png' %>
-      <%= image_tag @lenticular.lense.url, :width => 100 %><br><%= @lenticular.lense_dimensions %>
-    <% end %>
-  </div>
-
-  <div class="field">
     <%= f.label :anchor_hyperlink_reference %><br>
     <%= f.text_field :anchor_hyperlink_reference, :placeholder => "http://example.com/" %>
   </div>
-
-  <!-- <div class="field"> -->
-    <!-- <%= f.label :position %><br> -->
-    <!-- <%= f.number_field :position %> -->
-  <!-- </div> -->
 
   <div class="actions">
     <%= f.submit %> or <%= link_to "Cancel", admin_lenticulars_path %>

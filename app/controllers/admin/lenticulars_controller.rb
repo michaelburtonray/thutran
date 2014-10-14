@@ -7,6 +7,19 @@ class Admin::LenticularsController < Admin::ApplicationController
   # GET /admin/lenticulars.json
   def index
     @lenticulars = Lenticular.all
+
+    @background_config = Configurations.find_or_create_by(name: 'background') do |config|
+      config.value = Lenticular.first.id
+    end
+
+    @lense_config = Configurations.find_or_create_by(name: 'lense') do |config|
+      config.value = Lenticular.first.id
+    end
+
+    @background = Lenticular.find(@background_config.value)
+    @lense = Lenticular.find(@lense_config.value)
+
+
   end
 
   # GET /admin/lenticulars/1
@@ -62,6 +75,28 @@ class Admin::LenticularsController < Admin::ApplicationController
     render nothing: true
   end
 
+  def put_master_background
+    lenticular_id = params[:background_config]
+    configuration = Configurations.find_or_initialize_by(name: "background")
+    configuration.update(value: lenticular_id[:value])
+    render nothing: true
+  end
+
+  def put_master_lense
+    # lenticular_id = params[:lense]
+    # configuration = Configurations.find_or_initialize_by(name: "lense")
+    # configuration.update(value: lenticular_id)
+
+
+    lense_config = params[:lense_config]
+    configuration = Configurations.find_or_initialize_by(name: "lense")
+    configuration.update(value: lense_config[:value])
+
+
+
+    render nothing: true
+  end
+
   # DELETE /admin/lenticulars/1
   # DELETE /admin/lenticulars/1.json
   def destroy
@@ -83,3 +118,4 @@ class Admin::LenticularsController < Admin::ApplicationController
       params.require(:lenticular).permit(:image, :anchor_hyperlink_reference, :position)
     end
 end
+

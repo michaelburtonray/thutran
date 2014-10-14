@@ -28,9 +28,19 @@
 
             <td><%= link_to lenticular.anchor_hyperlink_reference, lenticular.anchor_hyperlink_reference %></td>
 
-            <td><input type="radio" id="background_<%= lenticular.id %>" name="background" value="<%= lenticular.id %>"><label for="background_<%= lenticular.id %>">use as background</label></td>
-            <td><input type="radio" id="lense_<%= lenticular.id %>" name="lense" value="<%= lenticular.id %>"><label for="lense_<%= lenticular.id %>">use as master lense</label></td>
-            <!-- <td><%= link_to 'Show', "/\#lenticular_#{lenticular.id}", :class => "update button", :target => "_blank" %></td> -->
+
+            <td>
+              [<%= @background.id %>] [<%= lenticular.id %>]
+              <%= radio_button :background_config, :value, lenticular.id %>
+              <%= label :background_config_value, lenticular.id, 'use as background' %>
+            </td>
+
+
+            <td>
+              <%= radio_button :lense_config, :value, lenticular.id %>
+              <%= label :lense_config_value, lenticular.id, 'use as master lense' %>
+            </td>
+
             <td><%= link_to 'Edit', edit_admin_lenticular_path(lenticular), :class => "edit button" %></td>
             <td><%= link_to 'Destroy', [:admin, lenticular], method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete button" %></td>
           </tr>
