@@ -39,6 +39,10 @@ label[for] {
   color: $black;
   transition-duration: $fast;
   }
+  &.edit:before {
+    content: "\2254";
+    font-size: xx-large;
+  }
 }
 
 input[type="text"] {
