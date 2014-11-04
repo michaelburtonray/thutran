@@ -12,8 +12,9 @@ class IndexController < ApplicationController
       @lenticulars = Lenticular.where("id != ?", background_id).where("id != ?", lense_id).all
 
     else
+      @lenticulars = Lenticular.all
 
-      render nothing: true
+      # render nothing: true
 
     end
 

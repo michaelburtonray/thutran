@@ -1,14 +1,18 @@
 <% if @background %>
 <% end %>
 
-<% content_for :additional_css do %>
-  <style type="text/css">
-    html { background-image: url('<%= @background.image.url %>') }
-    #lense { background-image: url('<%= @lense.image.url %>') }
-  </style>
+<% if @background %>
+  <% content_for :additional_css do %>
+    <style type="text/css">
+      html { background-image: url('<%= @background.image.url %>') }
+      #lense { background-image: url('<%= @lense.image.url %>') }
+    </style>
+  <% end %>
 <% end %>
 
-<div id="background-info" data-image-width="<%= @background.image_dimensions[0] %>" data-image-height="<%= @background.image_dimensions[1] %>" data-lense-width="<%= @lense.image_dimensions[0] %>" data-lense-height="<%= @lense.image_dimensions[1] %>"></div>
+<% if @background %>
+  <div id="background-info" data-image-width="<%= @background.image_dimensions[0] %>" data-image-height="<%= @background.image_dimensions[1] %>" data-lense-width="<%= @lense.image_dimensions[0] %>" data-lense-height="<%= @lense.image_dimensions[1] %>"></div>
+<% end %>
 
 <% if @lenticulars.any? %>
 

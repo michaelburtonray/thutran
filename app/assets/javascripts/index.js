@@ -2,33 +2,38 @@
 
   "use strict";
 
-  var $lenses,
+  var $_first_lenticular, first_lenticular_half_height, first_lenticular_margin_top,
     flag = false,
     animate_background_position = false,
     direction = 'down';
 
   $(function() {
 
-    $lenses = $('.lense').add('body');
+    $_first_lenticular = document.querySelector('.lenticular');
+    if ($_first_lenticular) {
+      first_lenticular_half_height = $_first_lenticular.clientHeight/2;
+      positionFirstLenticular.call();
+      window.addEventListener('resize', positionFirstLenticular);
+    }
 
     if('ontouchstart' in window) {
-      document.documentElement.classList.add('touch');
-      document.documentElement.classList.add('animate');
+      document.documentElement.classList.add('touch', 'animate');
     } else {
       document.documentElement.classList.add('no-touch');
     }
 
-
     document.addEventListener('keypress', respondToKeypress);
-    // $(document).on('touchend', respondToKeypress);
-
 
     window.addEventListener('load', fadeInContent);
 
     checkDevicePixelRatio();
-
   });
 
+  function positionFirstLenticular() {
+    first_lenticular_margin_top = Math.max(window.innerHeight/2 - first_lenticular_half_height, 0);
+
+    $_first_lenticular.style.marginTop = first_lenticular_margin_top + 'px';
+  }
 
   function fadeInContent() {
 
@@ -76,13 +81,15 @@
 
     var background_info_el = document.querySelector('#background-info');
 
-    var html_background_width = background_info_el.dataset['imageWidth']/devicePixelRatio,
-      html_background_height = background_info_el.dataset['imageHeight']/devicePixelRatio,
-      body_background_width = background_info_el.dataset['lenseWidth']/devicePixelRatio,
-      body_background_height = background_info_el.dataset['lenseHeight']/devicePixelRatio;
+    if(background_info_el) {
+      var html_background_width = background_info_el.dataset['imageWidth']/devicePixelRatio,
+        html_background_height = background_info_el.dataset['imageHeight']/devicePixelRatio,
+        body_background_width = background_info_el.dataset['lenseWidth']/devicePixelRatio,
+        body_background_height = background_info_el.dataset['lenseHeight']/devicePixelRatio;
 
-    document.documentElement.style.backgroundSize = html_background_width + "px " + html_background_height + "px";
-    document.body.style.backgroundSize = body_background_width + "px " + body_background_height + "px";
+      document.documentElement.style.backgroundSize = html_background_width + "px " + html_background_height + "px";
+      document.body.style.backgroundSize = body_background_width + "px " + body_background_height + "px";
+    }
   }
 
 }).call();
