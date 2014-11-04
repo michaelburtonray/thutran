@@ -49,13 +49,13 @@ html.loading body {
 }
 
 body {
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  // font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: sans-serif;
   font-size: xx-large;
-  font-weight: 100;
+  // font-weight: 100;
   letter-spacing: 1px;
   margin: 0;
   position: relative;
-  -webkit-transition: 800ms opacity;
   transition: 800ms opacity;
 }
 
@@ -170,6 +170,7 @@ a#instructions-toggle {
 }
 
 #instructions {
+  cursor: pointer;
   font-size: 10vh;
   position: fixed;
   top: 50%;
@@ -177,11 +178,18 @@ a#instructions-toggle {
   pointer-events: none;
   transform: translate(-50%, 0);
   transition-duration: $slow;
+  transition-property: opacity, transform;
   opacity: 0;
   &.active {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%);
     transition-duration: $slow;
+
+    &:hover {
+      opacity: 0.5;
+      transform: translate(-50%,-49%);
+    }
+
   }
 }

@@ -30,7 +30,7 @@
     checkDevicePixelRatio();
 
     $('#instructions-toggle').on('click', toggleInstructions);
-    $('#instructions').on('clik', toggleInstructions);
+    $('#instructions').on('click', toggleInstructions);
   });
 
   function positionFirstLenticular() {
