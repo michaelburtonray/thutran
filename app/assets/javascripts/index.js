@@ -2,12 +2,13 @@
 
   "use strict";
 
-  var $_first_lenticular, first_lenticular_half_height, first_lenticular_margin_top,
+  var $_first_lenticular, first_lenticular_half_height, first_lenticular_margin_top, $instructions,
     flag = false,
     animate_background_position = false,
     direction = 'down';
 
   $(function() {
+    $instructions = $('#instructions');
 
     $_first_lenticular = document.querySelector('.lenticular');
     if ($_first_lenticular) {
@@ -27,6 +28,9 @@
     window.addEventListener('load', fadeInContent);
 
     checkDevicePixelRatio();
+
+    $('#instructions-toggle').on('click', toggleInstructions);
+    $('#instructions').on('clik', toggleInstructions);
   });
 
   function positionFirstLenticular() {
@@ -59,7 +63,6 @@
     }
   }
 
-
   function checkDevicePixelRatio() {
 
     $('.lenticular').each(function(){
@@ -90,6 +93,10 @@
       document.documentElement.style.backgroundSize = html_background_width + "px " + html_background_height + "px";
       document.body.style.backgroundSize = body_background_width + "px " + body_background_height + "px";
     }
+  }
+
+  function toggleInstructions(event) {
+    $instructions.toggleClass('active');
   }
 
 }).call();

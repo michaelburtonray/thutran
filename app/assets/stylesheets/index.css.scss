@@ -141,26 +141,47 @@ a.image:hover {
 }
 
 article.lenticular {
-  // background-image: url(/images/BG_NOISE_lens.png);
   background-position: bottom center;
   background-repeat: repeat;
 }
 
 
 footer {
-  // background: white;
-  // background: hsla(0, 100%, 0%,.65);
-  /*position: absolute;*/
   overflow: hidden;
   position: relative;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1;
-  // text-align: center;
   p {
     margin: 1em;
     padding: 0 1em;
   }
 }
 
+a#instructions-toggle {
+  color: magenta;
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  padding: 1em;
+  right: 0;
+  top: 0;
+}
+
+#instructions {
+  font-size: 10vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  transition-duration: $slow;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    transition-duration: $slow;
+  }
+}

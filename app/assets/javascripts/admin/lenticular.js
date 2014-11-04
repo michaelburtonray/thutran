@@ -11,32 +11,33 @@
 
     if(window.location.pathname ==="/admin/lenticulars") {
 
-      lenticulars_table_el = document.querySelector('#lenticulars'),
-      lenticulars_tbody = lenticulars_table_el.querySelector('tbody');
-
-      form_el =  document.querySelector('form');
-
-      $(lenticulars_table_el).find('tbody').sortable({
-        handle: '.handle',
-        axis: "y",
-        helper: fixHelperModified,
-        forceHelperSize: true,
-        forcePlaceholderSize: true,
-        update: updateIndex
-      });
-
-      $(form_el).on('change', 'input[name="background_config[value]"]', putBackground);
-      $(form_el).on('change', 'input[name="lense_config[value]"]', putLense);
-
-      // $(form_el).on('change', 'input[type="radio"]', putLense);
+      if(document.querySelector('#lenticulars')) {
 
 
-      $(document).on('ajaxStart', ajaxStart);
-      $(document).on('ajaxSend', ajaxSend);
-      $(document).on('ajaxSuccess', ajaxSuccess);
-      $(document).on('ajaxError', ajaxError);
-      $(document).on('ajaxComplete', ajaxComplete);
+        lenticulars_table_el = document.querySelector('#lenticulars'),
+        lenticulars_tbody = lenticulars_table_el.querySelector('tbody');
 
+        form_el =  document.querySelector('form');
+
+        $(lenticulars_table_el).find('tbody').sortable({
+          handle: '.handle',
+          axis: "y",
+          helper: fixHelperModified,
+          forceHelperSize: true,
+          forcePlaceholderSize: true,
+          update: updateIndex
+        });
+
+        $(form_el).on('change', 'input[name="background_config[value]"]', putBackground);
+        $(form_el).on('change', 'input[name="lense_config[value]"]', putLense);
+
+        $(document).on('ajaxStart', ajaxStart);
+        $(document).on('ajaxSend', ajaxSend);
+        $(document).on('ajaxSuccess', ajaxSuccess);
+        $(document).on('ajaxError', ajaxError);
+        $(document).on('ajaxComplete', ajaxComplete);
+
+      }
 
 
     }
