@@ -74,12 +74,12 @@
 
 
   function fixHelperModified(e, tr) {
-      var $originals = tr.children();
-      var $helper = tr.clone();
-      $helper.children().each(function(index) {
-          $(this).width($originals.eq(index).width())
-      });
-      return $helper;
+    var $originals = tr.children();
+    var $helper = tr.clone();
+    $helper.children().each(function(index) {
+      $(this).width($originals.eq(index).width());
+    });
+    return $helper;
   }
 
   function updateIndex(e, ui) {
@@ -121,6 +121,4 @@
   function ajaxComplete() {
     console.log('ajaxComplete');
   }
-
-
 }).call();
