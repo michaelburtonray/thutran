@@ -25,6 +25,14 @@
 
   <%= render "shared/footer" %>
 
-    <div id="lense" data-width="<%= @lense.image_dimensions[0] %>" data-height="<%= @lense.image_dimensions[1] %>"></div>
+  <div id="lense" data-width="<%= @lense.image_dimensions[0] %>" data-height="<%= @lense.image_dimensions[1] %>"></div>
+
+  <a id="instructions-toggle">?</a>
+
+  <div id="instructions">
+    scroll to animate
+    <br>
+    press *spacebar* to toggle autoplay
+  </div>
 
 </body>

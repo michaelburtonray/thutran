@@ -16,17 +16,7 @@
 
 <% if @lenticulars.any? %>
 
-  <% @lenticulars.each do |lenticular| %>
-
-    <article class="lenticular" id="lenticular_<%= lenticular.id %>" style="<%= lenticular.position == 0 ? "margin-top: calc(50vh - #{lenticular.image_dimensions[1]/2}px)" : nil %>">
-      <% if lenticular.anchor_hyperlink_reference.length > 0 %>
-        <a  class="image" href="<%= lenticular.anchor_hyperlink_reference %>" target="_blank" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px" data-width="<%= lenticular.image_dimensions[0] %>" data-height="<%= lenticular.image_dimensions[1] %>"></a>
-      <% else %>
-        <div class="image" style="background-image: url('<%= lenticular.image.url %>'); max-width: <%= lenticular.image_dimensions[0] %>px; height: <%= lenticular.image_dimensions[1] %>px" data-width="<%= lenticular.image_dimensions[0] %>" data-height="<%= lenticular.image_dimensions[1] %>"></div>
-      <% end %>
-    </article>
-
-  <% end %>
+  <%= render partial: "lenticular", collection: @lenticulars %>
 
 <% else %>
 
