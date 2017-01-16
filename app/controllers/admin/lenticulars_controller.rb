@@ -18,8 +18,8 @@ class Admin::LenticularsController < Admin::ApplicationController
         config.value = Lenticular.first.id
       end
 
-      @background = Lenticular.find(@background_config.value)
-      @lense = Lenticular.find(@lense_config.value)
+      # @background = Lenticular.find(@background_config.value)
+      # @lense = Lenticular.find(@lense_config.value)
 
     end
 
